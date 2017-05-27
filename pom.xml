@@ -10,8 +10,15 @@
 
     <properties>
         <allure.version>1.4.23.HOTFIX1</allure.version>
+        <ghostdriver.version>1.1.0</ghostdriver.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -24,11 +31,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>2.26</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -48,9 +50,19 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.machinepublishers</groupId>
+            <artifactId>jbrowserdriver</artifactId>
+            <version>0.17.8</version>
+        </dependency>
+        <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-junit-adaptor</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.4.0</version>
         </dependency>
     </dependencies>
 </project>

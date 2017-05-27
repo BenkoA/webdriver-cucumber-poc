@@ -1,38 +1,21 @@
 package pages;
 
-import com.gargoylesoftware.htmlunit.Page;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSpan;
-import utils.Helpers;
-
-import java.io.IOException;
-import java.util.List;
+import org.openqa.selenium.By;
 
 public class HomePage extends AbstractPage {
 
-    private String loginButtonLocator = "//div[@class='user-section']//span[contains(text(),'Log in')]";
+    private By loginButtonLocator = By.cssSelector(".login-button.nav-button");
     private String userInfoSectionLocator = "//span[@class='user-info']/span";
-    private HtmlPage currentPage;
 
-    public HomePage(WebClient webClient) {
-        setWebClient(webClient);
+    public HomePage() {
+      setDriver(driver);
     }
 
-    public Page clickOnLoginButton() {
-        currentPage = Helpers.getCurrentPage(webClient);
-        final List<HtmlSpan> loginButton = currentPage.getByXPath(loginButtonLocator);
-        try {
-            return loginButton.get(0).click();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public void clickOnLoginButton() {
+        driver.findElement(loginButtonLocator).click();
     }
 
     public String getUsernameFromHeader() {
-        currentPage = Helpers.getCurrentPage(webClient);
-        final List<HtmlSpan> userinfoSection = currentPage.getByXPath(userInfoSectionLocator);
-        return userinfoSection.get(0).getNodeValue();
+        return driver.findElement(By.xpath(userInfoSectionLocator)).getText();
     }
 }

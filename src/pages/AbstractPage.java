@@ -1,23 +1,28 @@
 package pages;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.concurrent.TimeUnit;
 
 public class AbstractPage {
-    protected WebClient webClient;
 
-    public void AbstractPage() {
-        // turn off htmlunit warnings
-        java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
-        java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
+    protected WebDriver driver;
 
-        webClient = new WebClient(BrowserVersion.CHROME);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
-        this.setWebClient(webClient);
+    public AbstractPage () {
+        DesiredCapabilities dcaps = new DesiredCapabilities();
+        dcaps.setCapability("takesScreenshot", true);
+
+        this.driver = new ChromeDriver(dcaps);
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.MILLISECONDS);
+        driver.manage().window().maximize();
     }
 
-    public void setWebClient(WebClient webClient) {
-        this.webClient = webClient;
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
     }
+
 
 }

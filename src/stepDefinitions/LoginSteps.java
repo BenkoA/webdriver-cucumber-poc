@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
@@ -17,22 +15,21 @@ public class LoginSteps extends AbstractPage{
     private LoginPage loginPage;
     private HomePage homepage;
 
-    private WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
     @Given("^I go to \"([^\"]*)\"$")
     public void I_go_to(String pageURL) throws IOException {
-        webClient.getPage(pageURL);
+        driver.get(pageURL);
     }
 
     @When("^I click the Login button$")
     public void I_click_the_Login_button() {
-        homepage = new HomePage(webClient);
+        homepage = new HomePage();
         homepage.clickOnLoginButton();
     }
 
     @When("^I login with username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void I_login_with_username_and_password(String username, String password) {
-        loginPage = new LoginPage(webClient);
+        loginPage = new LoginPage();
         loginPage.doLogin(username, password);
     }
 
