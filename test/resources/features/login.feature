@@ -6,6 +6,7 @@ Feature: Running Cucumber with WebDriver
 
   Scenario: Try to Login on Staging
     Given I go to "https://web-staging.tipdev.com/"
-    #When I click the Login button
-    #And I login with username "protractor_mt_test" and password "tester123"
-    #Then I should see the "Protractor Mttest (Protractor_mt_test)" name in the header
+    And I close the promo popup window
+    When I click the Login button
+    And I login with username "protractor_mt_test" and password "tester123"
+    Then I should see the "Protractor Mttest" name in the header

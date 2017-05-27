@@ -1,21 +1,23 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 
 public class LoginPage extends AbstractPage {
 
-    private String usernameField = "login";
-    private String passwordField = "password";
+    private By usernameField = By.id("login");
+    private By passwordField = By.id("password");
+    private By loginButton = By.id("loginButton");
 
-    public LoginPage() {
-        setDriver(driver);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
     public void doLogin(String name, String password) {
-        driver.findElement(By.id(usernameField)).sendKeys(name);
-        driver.findElement(By.id(passwordField)).sendKeys(password);
-        driver.findElement(By.id("loginButton")).click();
+        driver.findElement(usernameField).sendKeys(name);
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(loginButton).click();
     }
 
 }
