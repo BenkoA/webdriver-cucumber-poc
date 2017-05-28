@@ -1,14 +1,15 @@
-package stepDefinitions;
+package resources.stepDefinitions;
 
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.HomePage;
 import pages.LoginPage;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.And;
 
 import java.io.IOException;
 
@@ -32,7 +33,7 @@ public class LoginSteps {
         driver.get(pageURL);
     }
 
-    @Given("^I close the promo popup window$")
+    @And("^I close the promo popup window$")
     public void I_close_the_promo_popup_window() {
         homepage.closePromoPopupWindow();
     }
@@ -42,7 +43,7 @@ public class LoginSteps {
         homepage.clickOnLoginButton();
     }
 
-    @When("^I login with username \"([^\"]*)\" and password \"([^\"]*)\"$")
+    @And("^I login with username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void I_login_with_username_and_password(String username, String password) {
         loginPage.doLogin(username, password);
     }

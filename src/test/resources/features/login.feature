@@ -3,7 +3,7 @@ Feature: Running Cucumber with WebDriver
   I should be able to use Cucumber
   In order to run my E2E tests
 
-
+  @login
   Scenario: Try to Login on Staging
     Given I go to "https://web-staging.tipdev.com/"
     And I close the promo popup window
